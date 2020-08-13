@@ -1,9 +1,6 @@
 <template>
-    <div id="app">
-        <div id="load-screen">
-            <h1>asdasdas</h1>
-            <canvas id="wave"></canvas>
-        </div>
+    <div id="body">
+        <router-view></router-view>
     </div>
 </template>
 
