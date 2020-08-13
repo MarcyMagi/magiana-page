@@ -11,6 +11,12 @@ jobs:
 
     steps:
       
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-node@master
+      
+      - run: npm install
+
       - name: Build
         run: npm run build
         env:
