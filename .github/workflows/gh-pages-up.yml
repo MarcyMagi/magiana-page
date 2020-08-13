@@ -23,4 +23,4 @@ jobs:
           NODE_ENV: 'production'
 
       - name: Deploy
-        run: npm run deploy
+        run: npm run deploy $GIT_COMMITTER_EMAIL $GIT_COMMITTER_NAME
