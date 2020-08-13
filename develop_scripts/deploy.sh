@@ -20,7 +20,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git remote add https://github.com/MarcyMagi/magiana-page.git
-git push origin master:gh-pages
+git remote add origin https://github.com/MarcyMagi/magiana-page.git
+git push origin master:gh-pages --force
 
 cd -
