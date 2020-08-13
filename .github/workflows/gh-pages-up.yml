@@ -4,9 +4,9 @@ on: [push]
 
 jobs:
   build:
-  name: Set Env
+  name: Set-env
 
   steps:
-  - name: productionEnv
+  - name: production-env
     env:
       NODE_ENV: production
