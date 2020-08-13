@@ -1,32 +1,127 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+	<div id="app">
+		<div id="load-screen">
+			<canvas id="wave"></canvas>
+			<canvas id="magiana-load"></canvas>
+		</div>
+	</div>
 </template>
 
+<script>
+
+export default {
+	
+	data() {
+
+		return {
+
+		}
+		
+	},
+
+	mounted() {
+		const paper = require('paper')
+
+		let waveElement = document.getElementById("wave")
+
+		paper.setup(waveElement)
+
+		this.$nextTick(() => {
+			
+			const waveSet = {
+				length: 25,
+				range: 50,
+				celling: 400,
+				offset: 10,
+				speed: 5
+			 }
+			let wavePath = new paper.Path()
+			wavePath.fillColor = '#555'
+
+
+			let botLeft = new paper.Point(0, paper.view.size.height)
+			let botRight = new paper.Point(paper.view.size.width, paper.view.size.height)
+
+			let topPoints = []
+
+			let topWidthDistance = paper.view.size.width / waveSet.length;
+
+			for(let i = 0; i <= waveSet.length; i++) {
+				topPoints.push(new paper.Point(topWidthDistance * i, waveSet.celling))
+			}
+
+			wavePath.moveTo(botRight)
+			wavePath.lineTo(botLeft)
+
+			for(let point of topPoints) {
+				wavePath.lineTo(point)
+			}
+			wavePath.lineTo(botRight)
+
+			console.log(paper.view.size.height + ' ' + paper.view.size.width)
+
+
+			paper.view.onFrame = (e) => {
+				
+				let offsetSinus = (Math.sin(e.count/100) + 1) * paper.view.size.width
+
+				for(let i = 0; i <= waveSet.length + 2; i ++) {
+					let segment = wavePath.segments[i]
+					if(segment.point.y != paper.view.size.height && i != 1) {
+						let sinus = Math.sin(e.time * waveSet.speed + i * 0.27)
+						segment.point.y = sinus * waveSet.range + waveSet.celling
+						segment.point.y += offsetSinus/10 
+					}
+				}
+
+				wavePath.smooth({from: 2, to: length})
+
+			}
+
+
+		})
+
+	}
+
+}
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+	
+	@import "./css/reset";
 
-#nav {
-  padding: 30px;
+	html, body, #app {
+		height: 100%;
+	}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+	$primary-color: #333;
+	$secondary-color: #AAA;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+	#load-screen {
+		width: 100%;
+		height: 100%;
+		background-color: #333;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		#wave {
+			width: 100%;
+			height: 50%;
+			position: absolute;
+			bottom: 0;
+		}
+
+		#magiana-load {
+
+			position: relative;
+			width: 50vw;
+			height: 50vw;
+
+		}
+
+	}
+
+	
+
 </style>
