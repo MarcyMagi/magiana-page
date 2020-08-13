@@ -1,18 +1,63 @@
 <template>
-    <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
-        <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div id="app">
+        <div id="load-screen">
+            <h1>aaaaaa</h1>
+            <canvas id="wave"></canvas>
+        </div>
     </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
-    name: "Home",
-    components: {
-        HelloWorld
+    data() {
+        return {};
+    },
+
+    mounted() {
+        const paper = require("paper");
+
+        let waveElement = document.getElementById("wave");
+
+        paper.setup(waveElement);
+
+        const waveSet = {
+            length: 25,
+            range: 10,
+            celling: 100,
+            offset: 10,
+            speed: 5
+        };
+
+        console.log(waveSet)
+
+        this.$nextTick(() => {});
     }
 };
 </script>
+
+<style lang="scss">
+@import "../reset";
+
+html,
+body,
+#app {
+    height: 100%;
+}
+
+$primary-color: #333;
+$secondary-color: #aaa;
+
+#load-screen {
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #wave {
+        width: 100%;
+        height: 100%;
+    }
+}
+</style>

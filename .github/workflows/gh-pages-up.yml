@@ -1,0 +1,12 @@
+name: gh-pages-up
+
+on: [push]
+
+jobs:
+  build:
+  name: Set Env
+
+  steps:
+  - name: productionEnv
+    env:
+      NODE_ENV: production
