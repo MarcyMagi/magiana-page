@@ -12,13 +12,15 @@ cd dist
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
-git --work-tree="dist" add *
+git init
+git add -A
 git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push origin gh-pages --force
+git remote add https://github.com/MarcyMagi/magiana-page.git
+git push origin master:gh-pages
 
 cd -
