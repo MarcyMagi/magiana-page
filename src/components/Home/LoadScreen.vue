@@ -89,7 +89,7 @@ export default {
 
 <style lang="scss" scoped>
 
-$primary-load: #FFB7CC;
+$primary-load: #211B24;
 
 #load {
     width: 100%;
