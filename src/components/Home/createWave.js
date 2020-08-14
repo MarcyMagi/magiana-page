@@ -1,4 +1,6 @@
 module.exports = (paper, waveSet) => {
+    waveSet = waveSet.mobile;
+
     //create wavePath
     let wavePath = new paper.Path();
 
@@ -16,9 +18,14 @@ module.exports = (paper, waveSet) => {
 
     let topWidthDistance = paper.view.size.width / waveSet.length;
 
+    //create a point in the top side of the path with same distance between them in X, and
     for (let i = 0; i <= waveSet.length; i++) {
-        //uses celling max size idea
-        topPoints.push(new paper.Point(topWidthDistance * i, waveSet.celling));
+        topPoints.push(
+            new paper.Point(
+                topWidthDistance * i,
+                paper.view.size.height - waveSet.height
+            )
+        );
     }
 
     //create a rectangle figure
@@ -39,11 +46,13 @@ module.exports = (paper, waveSet) => {
             let segment = wavePath.segments[i];
 
             //ignore the bottom points
-            if (segment.point.y != paper.view.size.height /*&& i != 1*/) {
+            if (segment.point.y != paper.view.size.height) {
                 //create the wave aspect
                 let sinus = Math.sin(e.time * waveSet.speed + i * 0.27);
 
-                segment.point.y = sinus * waveSet.range + waveSet.celling;
+                segment.point.y =
+                    sinus * waveSet.range +
+                    (paper.view.size.height - waveSet.height);
 
                 //add a offset to simulate a tide
                 segment.point.y += offsetSinus / 10 + waveSet.offset;
