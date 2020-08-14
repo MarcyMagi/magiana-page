@@ -17,9 +17,7 @@ export default {
 
         paper.setup(waveElement);
 
-        this.$nextTick(() => {
-
-        });
+        this.$nextTick(() => {});
     }
 };
 </script>
@@ -29,8 +27,9 @@ export default {
 
 html,
 body,
-#app {
+#app,
+#body,
+.body-container {
     height: 100%;
 }
-
 </style>

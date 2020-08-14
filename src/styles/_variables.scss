@@ -1,2 +1,7 @@
 $primary-color: #333;
-$secondary-color: #aaa;
+$secundary-color: #aaa;
+
+:export {
+    primary: $primary-color;
+    secuondary: $secundary-color;
+}
