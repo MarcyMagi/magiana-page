@@ -3,8 +3,7 @@
 </template>
 
 <script>
-
-import colors from "../../styles/_variables.scss"
+import colors from "../../styles/_variables.scss";
 
 export default {
     data() {
@@ -14,8 +13,7 @@ export default {
     props: [],
 
     mounted() {
-        
-        console.log(colors)
+        console.log(colors);
 
         const paper = require("paper");
 
@@ -80,7 +78,7 @@ export default {
                 topWave.update(e);
                 midTopWave.update(e);
                 botWave.update(e);
-                midBotWave.update(e)
+                midBotWave.update(e);
             };
         });
     }
@@ -88,8 +86,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-$primary-load: #211B24;
+$primary-load: #211b24;
 
 #load {
     width: 100%;
