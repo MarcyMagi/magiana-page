@@ -1,63 +1,15 @@
 <template>
-    <div id="app">
-        <div id="load-screen">
-            <h1>aaaaaa</h1>
-            <canvas id="wave"></canvas>
-        </div>
-    </div>
+    
 </template>
 
 <script>
+import Load from '../components/Home/HomeLoad.vue'
+
 export default {
-    data() {
-        return {};
-    },
-
-    mounted() {
-        const paper = require("paper");
-
-        let waveElement = document.getElementById("wave");
-
-        paper.setup(waveElement);
-
-        const waveSet = {
-            length: 25,
-            range: 10,
-            celling: 100,
-            offset: 10,
-            speed: 5
-        };
-
-        console.log(waveSet)
-
-        this.$nextTick(() => {});
-    }
-};
+    
+}
 </script>
 
-<style lang="scss">
-@import "../reset";
+<style scoped>
 
-html,
-body,
-#app {
-    height: 100%;
-}
-
-$primary-color: #333;
-$secondary-color: #aaa;
-
-#load-screen {
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    #wave {
-        width: 100%;
-        height: 100%;
-    }
-}
 </style>

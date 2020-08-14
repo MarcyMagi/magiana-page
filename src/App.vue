@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./reset";
+@import "./styles/reset";
 
 html,
 body,
@@ -33,22 +33,4 @@ body,
     height: 100%;
 }
 
-$primary-color: #333;
-$secondary-color: #aaa;
-
-#load-screen {
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    #wave {
-        width: 100%;
-        height: 50%;
-        position: absolute;
-        bottom: 0;
-    }
-}
 </style>
