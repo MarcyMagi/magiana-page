@@ -1,5 +1,5 @@
 <template>
-    <canvas id="load"></canvas>
+    <canvas resize id="load"></canvas>
 </template>
 
 <script>
@@ -14,10 +14,12 @@ export default {
 
     mounted() {
         const paper = require("paper");
+        const wave = require("./scripts/wave");
+        const flowers = require("./scripts/flowers");
 
-        let waveElement = document.getElementById("load");
+        let loadCanvas = document.getElementById("load");
 
-        paper.setup(waveElement);
+        paper.setup(loadCanvas);
 
         //Create waves
 
@@ -75,14 +77,17 @@ export default {
             }
         };
 
-        const createWave = require("./createWave");
+        wave.setPaper(paper);
 
-        let topWave = createWave(paper, topWavePreset);
-        let midTopWave = createWave(paper, midTopWavePreset);
-        let midBotWave = createWave(paper, midBotWavePreset);
-		let botWave = createWave(paper, botWavePreset);
-		
-		//Create loading avatar
+        let topWave = wave.createWave(topWavePreset);
+        let midTopWave = wave.createWave(midTopWavePreset);
+        let midBotWave = wave.createWave(midBotWavePreset);
+        let botWave = wave.createWave(botWavePreset);
+
+        flowers.setPaper(paper);
+        flowers.createFlowers();
+
+        //Setting up animation
 
         paper.view.onFrame = e => {
             topWave.update(e);
